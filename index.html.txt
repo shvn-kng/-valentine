@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(#ffdee9, #b5fffc);
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff4d6d;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .gifts {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .gift {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 200px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+    }
+
+    .content {
+      margin-top: 30px;
+    }
+
+    img {
+      max-width: 250px;
+      border-radius: 15px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="question">Will you be my Valentine? 💖</h1>
+
+  <div id="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+
+  <div id="giftsSection" class="hidden">
+    <h2>I got you some presents 🎁</h2>
+
+    <div class="gifts">
+      <div class="gift" onclick="showPhotos()">📸 Photos</div>
+      <div class="gift" onclick="playSong()">🎵 Favorite Song</div>
+      <div class="gift" onclick="showLetter()">💌 Letter</div>
+    </div>
+
+    <div class="content" id="contentArea"></div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const question = document.getElementById("question");
+    const buttons = document.getElementById("buttons");
+    const giftsSection = document.getElementById("giftsSection");
+    const contentArea = document.getElementById("contentArea");
+
+    yesBtn.onclick = () => {
+      question.innerText = "YAYYY 💕🥰";
+      buttons.classList.add("hidden");
+      giftsSection.classList.remove("hidden");
+    };
+
+    noBtn.onmouseover = () => {
+      noBtn.style.position = "absolute";
+      noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+      noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    };
+
+    function showPhotos() {
+      contentArea.innerHTML = `
+        <h3>My favorite person 📸</h3>
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+      `;
+    }
+
+    function playSong() {
+      contentArea.innerHTML = `
+        <h3>This song reminds me of you 🎶</h3>
+        <audio controls autoplay>
+          <source src="song.mp3" type="audio/mpeg">
+        </audio>
+      `;
+    }
+
+    function showLetter() {
+      contentArea.innerHTML = `
+        <h3>For You 💌</h3>
+        <p>
+          Dear my love,<br><br>
+          Write your letter here. Tell her how special she is,
+          how much you love her, and why you want her as your Valentine 💖<br><br>
+          Love,<br>
+          Your name
+        </p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
